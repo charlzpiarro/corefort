@@ -1,11 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
+import { IconEnvelope } from "../Common/UiIcons";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 const NewsLatterBox = () => {
-  const { theme } = useTheme();
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -49,8 +48,13 @@ const NewsLatterBox = () => {
       data-aos-delay="200"
     >
       {submitted ? (
-        <div className="flex h-64 items-center justify-center text-center text-lg font-semibold text-green-600 dark:text-green-400">
-           Thanks for joining the winning team! <br /> You’ll be the first to hear the latest — stay awesome. 💌
+        <div className="flex h-64 flex-col items-center justify-center gap-4 px-4 text-center">
+          <IconEnvelope className="h-12 w-12 text-primary" />
+          <p className="text-lg font-semibold text-green-600 dark:text-green-400">
+            Thanks for subscribing.
+            <br />
+            You will hear from us with updates and announcements.
+          </p>
         </div>
       ) : (
         <>

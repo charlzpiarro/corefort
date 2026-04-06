@@ -33,7 +33,9 @@ export default function RootLayout({
         {/* Optional: Add other favicon sizes or formats if needed */}
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </head>
-      <body className={`bg-[#FCFCFC] dark:bg-black ${inter.className}`}>
+      <body
+        className={`bg-gradient-to-b from-primary/[0.05] via-[#FCFCFC] to-[#FCFCFC] antialiased dark:from-gray-dark dark:via-black dark:to-black ${inter.className}`}
+      >
         <Providers>
           <Header />
           {children}

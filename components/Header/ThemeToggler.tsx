@@ -1,12 +1,15 @@
+"use client";
+
 import { useTheme } from "next-themes";
 
 const ThemeToggler = () => {
   const { theme, setTheme } = useTheme();
   return (
-    <button aria-label='theme toggler'
-    
+    <button
+      aria-label="Toggle dark mode"
+      type="button"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="flex items-center justify-center text-black rounded-full cursor-pointer bg-gray-2 dark:bg-dark-bg h-9 w-9 dark:text-white md:h-14 md:w-14"
+      className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-stroke bg-gray-light text-black transition hover:border-primary/30 dark:border-stroke-dark dark:bg-bg-color-dark dark:text-white md:h-11 md:w-11"
     >
       {/* <br /><h2>click</h2> */}
       <svg

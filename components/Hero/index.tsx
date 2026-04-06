@@ -1,207 +1,116 @@
-'use client';
+"use client";
 import React, { useEffect } from "react";
 import Link from "next/link";
 import AOS from "aos";
-import "aos/dist/aos.css"; // Import AOS CSS
+import "aos/dist/aos.css";
+import AnimatedCounter from "@/components/Common/AnimatedCounter";
+import { IconCheck } from "@/components/Common/UiIcons";
 
 const Hero = () => {
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Animation duration
-      easing: "ease-in-out", // Easing function
-      once: true, // Ensures the animation happens only once
+      duration: 900,
+      easing: "ease-in-out",
+      once: true,
     });
   }, []);
 
   return (
     <section
       id="home"
-      className="dark:bg-gray-dark relative z-10 overflow-hidden bg-white pb-16 pt-[120px] md:pb-[120px] md:pt-[150px] xl:pb-[160px] xl:pt-[180px] 2xl:pb-[200px] 2xl:pt-[210px]"
+      className="relative overflow-hidden bg-gradient-to-b from-primary/[0.06] via-white to-white pb-20 pt-[160px] dark:from-primary/10 dark:via-gray-dark dark:to-gray-dark md:pb-24 md:pt-[190px]"
     >
-      <div className="container">
-        <div className="-mx-4 flex flex-wrap">
-          <div className="w-full px-4">
-            <div
-              className="wow fadeInUp mx-auto max-w-[800px] text-center"
-              data-wow-delay=".2s"
-            >
-              <h1
-                className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight"
-                data-aos="fade-up" 
-                data-aos-delay="200"
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 z-0 h-32 bg-gradient-to-b from-primary/15 to-transparent dark:from-primary/20"
+      />
+      <div className="container relative z-10">
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div data-aos="fade-right">
+            <span className="mb-5 inline-flex rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
+              Built for growth-focused teams
+            </span>
+            <h1 className="mb-6 text-4xl font-extrabold leading-tight text-black dark:text-white md:text-5xl xl:text-[56px]">
+              Enterprise-grade digital products with startup speed
+            </h1>
+            <p className="mb-8 max-w-[580px] text-lg leading-relaxed text-body-color dark:text-body-color-dark">
+              Corefort Technologies designs and ships secure web, mobile, cloud,
+              and cybersecurity solutions that help businesses scale with
+              confidence.
+            </p>
+            <div className="flex flex-wrap items-center gap-4">
+              <Link
+                href="/contact"
+                className="rounded-xl bg-primary px-7 py-3.5 text-base font-semibold text-white transition hover:bg-primary/90"
               >
-                Smart Tech Solutions for Modern Businesses
-              </h1>
-              <p
-                className="dark:text-body-color-dark mb-12 text-base !leading-relaxed text-body-color sm:text-lg md:text-xl"
-                data-aos="fade-up" 
-                data-aos-delay="400"
+                Book a Consultation
+              </Link>
+              <Link
+                href="#Services"
+                className="rounded-xl border border-stroke px-7 py-3.5 text-base font-semibold text-dark transition hover:border-primary hover:text-primary dark:border-stroke-dark dark:text-white"
               >
-                At Corefort Technologies, we build powerful, secure, and scalable
-                solutions — from Web & Mobile Apps to Cybersecurity, Cloud, and Custom Systems. 
-                Your digital transformation starts here.
+                Explore Services
+              </Link>
+            </div>
+            <div className="mt-9 grid max-w-[520px] grid-cols-3 gap-3 sm:gap-4">
+              <div className="rounded-xl border border-stroke bg-white/90 p-3 text-center shadow-sm dark:border-stroke-dark dark:bg-dark sm:p-4 sm:text-left">
+                <p className="text-xl font-bold tabular-nums text-primary sm:text-2xl">
+                  <AnimatedCounter end={120} suffix="+" />
+                </p>
+                <p className="mt-1 text-xs text-body-color dark:text-body-color-dark sm:text-sm">
+                  Projects delivered
+                </p>
+              </div>
+              <div className="rounded-xl border border-stroke bg-white/90 p-3 text-center shadow-sm dark:border-stroke-dark dark:bg-dark sm:p-4 sm:text-left">
+                <p className="text-xl font-bold tabular-nums text-primary sm:text-2xl">
+                  <AnimatedCounter end={98} suffix="%" />
+                </p>
+                <p className="mt-1 text-xs text-body-color dark:text-body-color-dark sm:text-sm">
+                  Client retention
+                </p>
+              </div>
+              <div className="rounded-xl border border-stroke bg-white/90 p-3 text-center shadow-sm dark:border-stroke-dark dark:bg-dark sm:p-4 sm:text-left">
+                <p className="text-xl font-bold tabular-nums text-primary sm:text-2xl">
+                  <AnimatedCounter end={24} suffix="/7" />
+                </p>
+                <p className="mt-1 text-xs text-body-color dark:text-body-color-dark sm:text-sm">
+                  Monitoring support
+                </p>
+              </div>
+            </div>
+          </div>
+          <div data-aos="fade-left">
+            <div className="rounded-3xl border border-stroke bg-gradient-to-br from-primary/15 via-white to-yellow/10 p-6 shadow-three dark:border-stroke-dark dark:from-primary/25 dark:via-dark dark:to-bg-color-dark sm:p-8">
+              <p className="mb-6 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+                Why businesses choose us
               </p>
-              <div
-                className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0"
-                data-aos="fade-up"
-                data-aos-delay="600"
-              >
-                <Link
-                  href="/contact"
-                  className="rounded-sm bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
-                >
-                  🚀 Let’s Work Together
-                </Link>
-                <Link
-                  href="#Services"
-                  className="inline-block rounded-sm bg-black px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-black/90 dark:bg-white/10 dark:text-white dark:hover:bg-white/5"
-                >
-                  Explore Our Services
-                </Link>
+              <div className="space-y-4">
+                {[
+                  "Security-first architecture and coding standards",
+                  "Fast iteration with clear delivery milestones",
+                  "Scalable cloud-native infrastructure",
+                  "Dedicated support and transparent communication",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="flex flex-col items-center gap-2 rounded-xl border border-stroke bg-white/90 p-4 text-center dark:border-stroke-dark dark:bg-dark/60 sm:flex-row sm:items-start sm:gap-3 sm:text-left"
+                  >
+                    <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-white shadow-sm">
+                      <IconCheck className="h-4 w-4" />
+                    </span>
+                    <p className="text-sm text-body-color dark:text-body-color-dark sm:text-base">
+                      {item}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div className="absolute right-0 top-0 z-[-1] opacity-30 lg:opacity-100">
-        <svg
-          width="450"
-          height="556"
-          viewBox="0 0 450 556"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle
-            cx="277"
-            cy="63"
-            r="225"
-            fill="url(#paint0_linear_25:217)"
-          />
-          <circle
-            cx="17.9997"
-            cy="182"
-            r="18"
-            fill="url(#paint1_radial_25:217)"
-          />
-          <circle
-            cx="76.9997"
-            cy="288"
-            r="34"
-            fill="url(#paint2_radial_25:217)"
-          />
-          <circle
-            cx="325.486"
-            cy="302.87"
-            r="180"
-            transform="rotate(-37.6852 325.486 302.87)"
-            fill="url(#paint3_linear_25:217)"
-          />
-          <circle
-            opacity="0.8"
-            cx="184.521"
-            cy="315.521"
-            r="132.862"
-            transform="rotate(114.874 184.521 315.521)"
-            stroke="url(#paint4_linear_25:217)"
-          />
-          <circle
-            opacity="0.8"
-            cx="356"
-            cy="290"
-            r="179.5"
-            transform="rotate(-30 356 290)"
-            stroke="url(#paint5_linear_25:217)"
-          />
-          <circle
-            opacity="0.8"
-            cx="191.659"
-            cy="302.659"
-            r="133.362"
-            transform="rotate(133.319 191.659 302.659)"
-            fill="url(#paint6_linear_25:217)"
-          />
-          <defs>
-            <linearGradient
-              id="paint0_linear_25:217"
-              x1="-54.5003"
-              y1="-178"
-              x2="222"
-              y2="288"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#4A6CF7" />
-              <stop offset="1" stopColor="#4A6CF7" stopOpacity="0" />
-            </linearGradient>
-            <radialGradient
-              id="paint1_radial_25:217"
-              cx="0"
-              cy="0"
-              r="1"
-              gradientUnits="userSpaceOnUse"
-              gradientTransform="translate(17.9997 182) rotate(90) scale(18)"
-            >
-              <stop offset="0.145833" stopColor="#4A6CF7" stopOpacity="0" />
-              <stop offset="1" stopColor="#4A6CF7" stopOpacity="0.08" />
-            </radialGradient>
-            <radialGradient
-              id="paint2_radial_25:217"
-              cx="0"
-              cy="0"
-              r="1"
-              gradientUnits="userSpaceOnUse"
-              gradientTransform="translate(76.9997 288) rotate(90) scale(34)"
-            >
-              <stop offset="0.145833" stopColor="#4A6CF7" stopOpacity="0" />
-              <stop offset="1" stopColor="#4A6CF7" stopOpacity="0.08" />
-            </radialGradient>
-            <linearGradient
-              id="paint3_linear_25:217"
-              x1="226.775"
-              y1="-66.1548"
-              x2="292.157"
-              y2="351.421"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#4A6CF7" />
-              <stop offset="1" stopColor="#4A6CF7" stopOpacity="0" />
-            </linearGradient>
-            <linearGradient
-              id="paint4_linear_25:217"
-              x1="184.521"
-              y1="182.159"
-              x2="184.521"
-              y2="448.882"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#4A6CF7" />
-              <stop offset="1" stopColor="white" stopOpacity="0" />
-            </linearGradient>
-            <linearGradient
-              id="paint5_linear_25:217"
-              x1="356"
-              y1="110"
-              x2="356"
-              y2="470"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#4A6CF7" />
-              <stop offset="1" stopColor="white" stopOpacity="0" />
-            </linearGradient>
-            <linearGradient
-              id="paint6_linear_25:217"
-              x1="118.524"
-              y1="29.2497"
-              x2="166.965"
-              y2="338.63"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#4A6CF7" />
-              <stop offset="1" stopColor="#4A6CF7" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
+      <div className="absolute left-1/2 top-20 -z-10 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
+      <div className="absolute -right-20 bottom-0 -z-10 h-[260px] w-[260px] rounded-full bg-yellow/20 blur-3xl dark:bg-yellow/10" />
+      <div className="absolute -left-20 top-0 -z-10 h-[260px] w-[260px] rounded-full bg-primary/10 blur-3xl" />
     </section>
   );
 };

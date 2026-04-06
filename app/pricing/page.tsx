@@ -1,32 +1,50 @@
-"use client"; // Client-side directive
-
-import { useEffect } from "react";
 import Pricing from "@/components/Pricing";
 import Breadcrumb from "@/components/Common/Breadcrumb";
 import { metadata } from "./pricingMetadata"; // Import metadata
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const PricingPage = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 800, // Set the animation duration
-      once: true,    // Make the animation only trigger once
-    });
-  }, []);
-
   return (
     <>
       <Breadcrumb
         pageName="Our Prices"
-        description="We are a tech company rooted in innovation and driven by impact — building secure, scalable, and smart solutions for businesses across industries. From mobile apps to cloud and cybersecurity, we’ve got you covered."
-        data-aos="fade-up"
-        data-aos-delay="200"
+        description="Flexible hosting plans for startups, businesses, and enterprise workloads with secure infrastructure and dependable support."
       />
-      
-      <div data-aos="fade-up" data-aos-delay="400">
-        <Pricing />
-      </div>
+
+      <section className="pb-3">
+        <div className="container">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              ["No setup fee", "Start quickly with zero onboarding charges."],
+              [
+                "Secure by default",
+                "SSL, monitoring, and backup support across plans.",
+              ],
+              [
+                "Local support",
+                "Fast response times from our regional support team.",
+              ],
+              [
+                "Scale anytime",
+                "Upgrade resources as your traffic and data grow.",
+              ],
+            ].map(([title, detail]) => (
+              <div
+                key={title}
+                className="rounded-2xl border border-stroke bg-white p-5 dark:border-stroke-dark dark:bg-dark"
+              >
+                <h3 className="text-sm font-semibold text-primary sm:text-base">
+                  {title}
+                </h3>
+                <p className="mt-2 text-sm text-body-color dark:text-body-color-dark">
+                  {detail}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Pricing />
     </>
   );
 };

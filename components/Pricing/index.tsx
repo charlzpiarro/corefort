@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import SectionTitle from "../Common/SectionTitle";
 import OfferList from "./OfferList";
 import PricingBox from "./PricingBox";
+import { IconCheckCircle } from "../Common/UiIcons";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import the AOS styles
 
@@ -11,16 +12,14 @@ const Pricing = () => {
   const [isMonthly, setIsMonthly] = useState(true);
 
   useEffect(() => {
-    console.log("AOS is being initialized");
-    // Initialize AOS when the component mounts
     AOS.init({
-      duration: 1000, // Duration of animation
-      once: true, // Animation happens once per scroll
+      duration: 1000,
+      once: true,
     });
   }, []);
 
   return (
-    <section id="pricing" className="relative z-10 py-16 md:py-20 lg:py-28">
+    <section id="pricing" className="relative z-10 py-12 sm:py-16 md:py-20 lg:py-24">
       <div className="container">
         {/* SectionTitle with AOS animation */}
         <div data-aos="fade-up" data-aos-delay="100">
@@ -34,7 +33,7 @@ const Pricing = () => {
 
         <div className="w-full">
           <div
-            className="wow fadeInUp mb-8 flex justify-center md:mb-12 lg:mb-16"
+            className="wow fadeInUp mb-8 flex items-center justify-center md:mb-12 lg:mb-16"
             data-wow-delay=".1s"
           >
             <span
@@ -43,7 +42,7 @@ const Pricing = () => {
                 isMonthly
                   ? "pointer-events-none text-primary"
                   : "text-dark dark:text-white"
-              } mr-4 cursor-pointer text-base font-semibold`}
+              } mr-3 cursor-pointer text-sm font-semibold sm:mr-4 sm:text-base`}
             >
               Monthly
             </span>
@@ -68,7 +67,7 @@ const Pricing = () => {
                 isMonthly
                   ? "text-dark dark:text-white"
                   : "pointer-events-none text-primary"
-              } ml-4 cursor-pointer text-base font-semibold`}
+              } ml-3 cursor-pointer text-sm font-semibold sm:ml-4 sm:text-base`}
             >
               Yearly
             </span>
@@ -81,7 +80,14 @@ const Pricing = () => {
             packageName="Basic"
             price={isMonthly ? "30,000" : "250,000"}
             duration={isMonthly ? "mo" : "yr"}
-            subtitle="✅ Perfect for students, freelancers, and personal portfolios."
+            subtitle={
+              <>
+                <IconCheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                <span className="min-w-0 flex-1">
+                  Perfect for students, freelancers, and personal portfolios.
+                </span>
+              </>
+            }
             data-aos="fade-up"
             data-aos-delay="200" // Staggered animation for each box
           >
@@ -98,7 +104,14 @@ const Pricing = () => {
             packageName="Lite"
             price={isMonthly ? "45,000" : "375,000"}
             duration={isMonthly ? "mo" : "yr"}
-            subtitle="✅ Ideal for startups, NGOs, and SMEs."
+            subtitle={
+              <>
+                <IconCheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                <span className="min-w-0 flex-1">
+                  Ideal for startups, NGOs, and SMEs.
+                </span>
+              </>
+            }
             data-aos="fade-up"
             data-aos-delay="400" // Staggered animation
           >
@@ -115,7 +128,14 @@ const Pricing = () => {
             packageName="Plus"
             price={isMonthly ? "60,000" : "500,000"}
             duration={isMonthly ? "mo" : "yr"}
-            subtitle="✅ For high-traffic sites, hospitals, e-commerce."
+            subtitle={
+              <>
+                <IconCheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                <span className="min-w-0 flex-1">
+                  For high-traffic sites, hospitals, e-commerce.
+                </span>
+              </>
+            }
             data-aos="fade-up"
             data-aos-delay="600" // Staggered animation
           >

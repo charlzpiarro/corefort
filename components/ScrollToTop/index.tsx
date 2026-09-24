@@ -28,7 +28,7 @@ export default function ScrollToTop() {
   }, []);
 
   return (
-    <div className="fixed bottom-8 right-8 z-[99]">
+    <div className="fixed bottom-24 right-5 z-[99] sm:right-8">
       {isVisible && (
         <button
           type="button"

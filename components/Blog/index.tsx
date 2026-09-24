@@ -13,7 +13,7 @@ const Blog = () => {
       <div className="container">
         <SectionTitle
           title="Featured Projects"
-          paragraph="A curated selection of the innovative digital solutions we’ve crafted — built with precision, performance, and purpose."
+          paragraph="A curated selection of the innovative digital solutions we’ve crafted, built with precision, performance, and purpose."
           center
           data-aos="fade-up"
           data-aos-delay="400"

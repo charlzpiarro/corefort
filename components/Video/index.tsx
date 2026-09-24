@@ -19,7 +19,7 @@ const Video = () => {
       <div className="container">
         <SectionTitle
           title="We’re Here to Help"
-          paragraph="At Forecort, we specialize in delivering powerful, practical solutions. Whether it’s tech, support, or strategy — we’ve got you covered."
+          paragraph="At Forecort, we specialize in delivering powerful, practical solutions. Whether it’s tech, support, or strategy, we’ve got you covered."
           center
           mb="80px"
         />

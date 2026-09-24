@@ -25,7 +25,7 @@ const AboutSectionOne = () => {
             <div className="w-full px-4 lg:w-1/2">
               <SectionTitle
                 title="Built for Visionary Tech and Cyber Frontlines"
-                paragraph="At Corefort, we don’t just build tools — we craft digital strongholds. Whether you're launching a product, securing infrastructure, or scaling smart, we bring bulletproof code and razor-sharp design to your mission."
+                paragraph="At Corefort, we don’t just build tools; we craft digital strongholds. Whether you're launching a product, securing infrastructure, or scaling smart, we bring bulletproof code and razor-sharp design to your mission."
                 mb="44px"
               />
               <div

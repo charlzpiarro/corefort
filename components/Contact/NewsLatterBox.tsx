@@ -62,7 +62,7 @@ const NewsLatterBox = () => {
             Subscribe to receive future updates
           </h3>
           <p className="mb-11 border-b border-body-color border-opacity-25 pb-11 text-base leading-relaxed text-body-color dark:border-white dark:border-opacity-25">
-            Stay in the loop! We’ll send you the latest updates, product launches, and exclusive offers — no spam, ever.
+            Stay in the loop! We’ll send you the latest updates, product launches, and exclusive offers. No spam, ever.
           </p>
 
           <form onSubmit={handleSubmit}>

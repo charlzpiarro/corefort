@@ -55,7 +55,7 @@ const AboutSectionTwo = () => {
                   Scalable Solutions
                 </h3>
                 <p className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed">
-                  Our technology adapts with you — designed to grow with your needs, from startups to enterprise-level infrastructures.
+                  Our technology adapts with you, designed to grow with your needs, from startups to enterprise-level infrastructures.
                 </p>
               </div>
             </div>

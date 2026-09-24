@@ -7,9 +7,54 @@
 @layer base {
   html {
     font-size: 12px;
+    scroll-behavior: smooth;
   }
   body {
+    /* decorative glows/orbs bleed past the viewport; clip (not hidden) keeps sticky headers working */
+    overflow-x: clip;
     font-family: "Inter", sans-serif;
+  }
+
+  :focus-visible {
+    outline: 2px solid #3a56e8;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: rgba(58, 86, 232, 0.2);
+  }
+}
+
+.bg-grid-light {
+  background-image:
+    linear-gradient(rgba(18, 23, 35, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 23, 35, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.bg-grid-dark {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.text-gradient-brand {
+  background: linear-gradient(135deg, #3a56e8 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

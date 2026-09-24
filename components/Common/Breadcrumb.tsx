@@ -8,12 +8,12 @@ const Breadcrumb = ({
   description: string;
 }) => {
   return (
-    <section className="relative z-10 overflow-hidden pb-10 pt-28 sm:pb-12 lg:pt-[160px]">
+    <section className="relative z-10 overflow-hidden pb-10 pt-10 sm:pb-12 sm:pt-14">
       <div className="container">
         <div className="relative overflow-hidden rounded-3xl border border-stroke bg-gradient-to-br from-white via-white to-primary/[0.06] p-6 shadow-one backdrop-blur-sm dark:border-stroke-dark dark:from-dark dark:via-dark dark:to-primary/10 sm:p-8">
           <div
             aria-hidden
-            className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary/60 via-yellow/50 to-primary/60"
+            className="absolute inset-x-0 top-0 h-1 bg-gradient-brand"
           />
           <div className="flex flex-col gap-5 pt-1 md:flex-row md:items-center md:justify-between">
             <div className="max-w-[720px]">

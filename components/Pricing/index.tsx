@@ -25,7 +25,7 @@ const Pricing = () => {
         <div data-aos="fade-up" data-aos-delay="100">
           <SectionTitle
             title="Affordable Hosting Prices"
-            paragraph="From personal portfolios to enterprise-grade platforms, our hosting plans are designed to meet your needs without breaking the bank. Get blazing-fast performance, top-tier security, and 24/7 support — all at prices tailored for Tanzanian businesses and creators."
+            paragraph="From personal portfolios to enterprise-grade platforms, our hosting plans are designed to meet your needs without breaking the bank. Get blazing-fast performance, top-tier security, and 24/7 support, all at prices tailored for Tanzanian businesses and creators."
             center
             width="665px"
           />

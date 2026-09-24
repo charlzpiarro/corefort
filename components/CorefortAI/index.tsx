@@ -41,7 +41,7 @@ export default function CorefortAI() {
         aria-label={open ? "Close Corefort AI chat" : "Open Corefort AI chat"}
         aria-expanded={open}
         aria-controls="corefort-ai-panel"
-        className={`group fixed bottom-6 right-4 z-[100] flex items-center gap-2.5 rounded-full bg-hero-ink p-2 text-white shadow-[0_10px_30px_rgba(10,15,28,0.35)] ring-1 ring-white/10 transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_14px_36px_rgba(37,99,235,0.35)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hero-primary sm:right-6 sm:pr-5 ${
+        className={`group fixed bottom-6 right-4 z-[100] flex items-center gap-2.5 rounded-full bg-ink/[0.78] p-2 text-white shadow-[0_10px_30px_rgba(5,6,10,0.4)] ring-1 ring-white/20 backdrop-blur-xl backdrop-saturate-150 transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_14px_36px_rgba(37,99,235,0.35)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hero-primary sm:right-6 sm:pr-5 ${
           open ? "max-sm:pointer-events-none max-sm:opacity-0" : ""
         }`}
       >

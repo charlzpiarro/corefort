@@ -3,7 +3,7 @@ import { CONTACT } from "./knowledge";
 import { FALLBACK_UNKNOWN_PHRASE } from "./systemPrompt";
 
 const HUMAN_RE =
-  /\b(speak|talk|chat|connect|transfer)\b.{0,25}\b(human|person|someone|agent|representative|sales|team|staff|somebody)\b|\b(human|real person|live agent|representative)\b|\bcall me\b|\bphone number\b|\bcontact (details|info|information|you|sales|corefort)\b|\bhow (can|do) i (contact|reach)\b|\bwhere (are you|is your office)\b|\bwasiliana\b|\bmtu halisi\b/i;
+  /\b(speak|talk|chat|connect|transfer)\b.{0,25}\b(human|person|someone|agent|representative|sales|team|staff|somebody)\b|\b(human|real person|live agent|representative)\b|\bcall me\b|\bphone number\b|\bcontact (details|info|information|you|sales|corefort)\b|\bhow (can|do) i (contact|reach)\b|\bwasiliana\b|\bmtu halisi\b/i;
 
 const QUOTE_RE =
   /\b(quote|quotation|quotations|estimate|proposal|request (a )?(demo|quote)|get started|start a project|hire you|nukuu|bei ya)\b/i;
@@ -29,7 +29,7 @@ export function scriptedReply(intent: Intent): { text: string; actions: ChatActi
   if (intent.quote) {
     return {
       text:
-        "I can help you request a quotation. It takes about a minute: I'll ask for a few details about your business and what you need, and you decide whether to submit them to the Corefort team. Pricing for custom work depends on scope, which is why we ask first.",
+        "I can help you request a quotation. It takes about a minute: I'll ask for a few details about your business and what you need, plus an optional rough budget range so the team can suggest realistic options. You decide whether to submit them to the Corefort team. Pricing for custom work depends on scope, which is why we ask first.",
       actions: ["quote"],
     };
   }

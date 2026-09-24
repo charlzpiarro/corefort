@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import company from "@/shared/corefort-company.json";
 import { submitLead } from "./api";
 import { track } from "./analytics";
-import { QUOTE_INDUSTRIES, QUOTE_SOLUTIONS } from "./config";
+import { QUOTE_BUDGETS, QUOTE_INDUSTRIES, QUOTE_SOLUTIONS } from "./config";
 
 type Fields = {
   name: string;
@@ -12,6 +12,7 @@ type Fields = {
   industry: string;
   requirement: string;
   solution: string;
+  budget: string;
   phone: string;
   email: string;
   location: string;
@@ -45,7 +46,7 @@ function validateStep(step: number, f: Fields): Errors {
 }
 
 const stepOfField: Record<string, number> = {
-  name: 0, business: 0, industry: 0, requirement: 1, solution: 1, phone: 2, email: 2, contact: 2, location: 2, notes: 2, consent: 3,
+  name: 0, business: 0, industry: 0, requirement: 1, solution: 1, budget: 1, phone: 2, email: 2, contact: 2, location: 2, notes: 2, consent: 3,
 };
 
 interface Props {
@@ -63,7 +64,7 @@ export default function QuoteFlow({ prefill, onCancel, onDone }: Props) {
   const [status, setStatus] = useState<"idle" | "sending" | "failed" | "limited">("idle");
   const [errors, setErrors] = useState<Errors>({});
   const [f, setF] = useState<Fields>({
-    name: "", business: "", industry: "", requirement: prefill, solution: "", phone: "", email: "",
+    name: "", business: "", industry: "", requirement: prefill, solution: "", budget: "", phone: "", email: "",
     location: "", notes: "", consent: false, website: "",
   });
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -108,7 +109,7 @@ export default function QuoteFlow({ prefill, onCancel, onDone }: Props) {
   const summary = useMemo(
     () => [
       ["Name", f.name], ["Business", f.business], ["Industry", f.industry || "-"], ["Need", f.requirement],
-      ["Solution", f.solution || "Not sure yet"], ["Phone", f.phone || "-"], ["Email", f.email || "-"], ["Location", f.location || "-"],
+      ["Solution", f.solution || "Not sure yet"], ["Budget", f.budget || "Not shared"], ["Phone", f.phone || "-"], ["Email", f.email || "-"], ["Location", f.location || "-"],
     ],
     [f],
   );
@@ -184,6 +185,18 @@ export default function QuoteFlow({ prefill, onCancel, onDone }: Props) {
                   <button key={s} type="button" aria-pressed={f.solution === s} onClick={() => set("solution", f.solution === s ? "" : s)}
                     className={`min-h-[36px] rounded-full border px-3.5 text-[13px] font-medium transition ${f.solution === s ? "border-hero-primary bg-hero-primary text-white" : "border-stroke bg-white text-hero-ink hover:border-hero-primary"}`}>
                     {s}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div>
+              <span className={labelCls}>Rough budget <span className="font-normal text-hero-muted">(optional)</span></span>
+              <p className="mb-2 text-[13px] leading-relaxed text-hero-body">Helps the team suggest realistic options. Skip it if you prefer to discuss it later.</p>
+              <div className="flex flex-wrap gap-2">
+                {QUOTE_BUDGETS.map((b) => (
+                  <button key={b} type="button" aria-pressed={f.budget === b} onClick={() => set("budget", f.budget === b ? "" : b)}
+                    className={`min-h-[36px] rounded-2xl border px-3.5 py-1.5 text-left text-[13px] font-medium transition ${f.budget === b ? "border-hero-primary bg-hero-primary text-white" : "border-stroke bg-white text-hero-ink hover:border-hero-primary"}`}>
+                    {b}
                   </button>
                 ))}
               </div>

@@ -102,6 +102,7 @@ export interface LeadPayload {
   location: string;
   requirement: string;
   solution: string;
+  budget: string;
   notes: string;
   consent: boolean;
   website: string; // honeypot, must stay empty

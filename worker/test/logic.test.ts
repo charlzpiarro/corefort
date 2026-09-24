@@ -293,3 +293,75 @@ describe("house style: no dashes in assistant replies", () => {
     expect(buildSystemPrompt({ injectionDetected: false })).not.toMatch(/[\u2013\u2014]/);
   });
 });
+
+describe("budget field and company facts", () => {
+  const base = {
+    name: "Asha M", business: "Asha Pharmacy", industry: "", phone: "+255 712 345 678", email: "",
+    location: "", requirement: "Inventory and sales tracking for two branches.", solution: "Business Automation",
+    notes: "", consent: true, website: "",
+  };
+  it("accepts a published budget band and keeps it", () => {
+    const r = validateLead({ ...base, budget: "TZS 5M to 20M (about USD 2,000 to 8,000)" });
+    expect(r.lead!.budget).toBe("TZS 5M to 20M (about USD 2,000 to 8,000)");
+  });
+  it("treats budget as optional and drops values that are not a published band", () => {
+    expect(validateLead(base).lead!.budget).toBe("");
+    expect(validateLead({ ...base, budget: "1000000000 dollars" }).lead!.budget).toBe("");
+    expect(validateLead({ ...base, budget: "<script>x</script>" }).lead!.budget).toBe("");
+  });
+  it("includes the budget in the email sent to the team", async () => {
+    const lead = validateLead({ ...base, budget: "Over TZS 100M (over USD 40,000)" }).lead!;
+    const fetchMock = vi.fn(async () => new Response("{}", { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+    await deliverLead({ RESEND_API_KEY: "re_x", LEAD_NOTIFY_EMAIL: "team@example.com" } as Env, cfg, lead);
+    vi.unstubAllGlobals();
+    const body = JSON.parse((fetchMock.mock.calls[0] as unknown as [string, RequestInit])[1].body as string);
+    expect(body.text).toContain("Budget range: Over TZS 100M (over USD 40,000)");
+  });
+  it("says 'Not shared' when the visitor gave no budget", async () => {
+    const lead = validateLead(base).lead!;
+    const fetchMock = vi.fn(async () => new Response("{}", { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+    await deliverLead({ RESEND_API_KEY: "re_x", LEAD_NOTIFY_EMAIL: "team@example.com" } as Env, cfg, lead);
+    vi.unstubAllGlobals();
+    const body = JSON.parse((fetchMock.mock.calls[0] as unknown as [string, RequestInit])[1].body as string);
+    expect(body.text).toContain("Budget range: Not shared");
+  });
+  it("teaches the agent the registration fact and the budget and founder guardrails", () => {
+    expect(KNOWLEDGE_BASE).toContain("Registered in the United Republic of Tanzania and with BRELA");
+    expect(KNOWLEDGE_BASE).toContain("Nzasa Street, Kinondoni, Dar es Salaam, Tanzania");
+    expect(KNOWLEDGE_BASE).toContain("Charles Kikare Masima");
+    expect(KNOWLEDGE_BASE).toContain("Iyanbinwell Mwakibinga");
+    expect(KNOWLEDGE_BASE).toContain("Chief Executive Officer (CEO)");
+    expect(KNOWLEDGE_BASE).toContain("Chief Technology Officer (CTO)");
+    expect(KNOWLEDGE_BASE).toContain("Dar es Salaam");
+    expect(KNOWLEDGE_BASE).toContain("Zanzibar");
+    const prompt = buildSystemPrompt({ injectionDetected: false });
+    expect(prompt).toMatch(/ask ONCE and politely what rough budget/);
+    expect(prompt).toMatch(/Never state, estimate, compare or negotiate prices/);
+    expect(prompt).toMatch(/anything about the founders beyond what is listed/);
+  });
+});
+
+describe("location questions are answered from the knowledge base, not the contact script", () => {
+  it.each(["Where is your office located?", "Where are you based?", "Where are you located in Dar es Salaam?"])(
+    "does not trigger the human handoff: %s",
+    (t) => {
+      expect(detectIntent(t).handoff).toBe(false);
+      expect(scriptedReply(detectIntent(t))).toBeNull();
+    },
+  );
+  it("still hands off when the visitor asks for a person or a phone number", () => {
+    expect(detectIntent("can I talk to someone?").handoff).toBe(true);
+    expect(detectIntent("what is your phone number").handoff).toBe(true);
+  });
+});
+
+describe("product facts guardrail", () => {
+  it("tells the model not to add product capabilities or claim unlisted sectors", () => {
+    const p = buildSystemPrompt({ injectionDetected: false });
+    expect(p).toMatch(/PRODUCT FACTS/);
+    expect(p).toMatch(/Never add capabilities such as real-time updates/);
+    expect(p).toMatch(/the team confirms whether it fits/);
+  });
+});

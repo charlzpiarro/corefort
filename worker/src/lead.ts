@@ -1,6 +1,6 @@
 import type { Config } from "./config";
 import type { Env } from "./types";
-import { LEAD_SOLUTION_OPTIONS } from "./agent/knowledge";
+import { BUDGET_OPTIONS, LEAD_SOLUTION_OPTIONS } from "./agent/knowledge";
 import { limit } from "./ratelimit";
 import { cleanText, clientIp, corsHeaders, json, readJson, stripMarkup } from "./security";
 
@@ -13,6 +13,8 @@ export interface Lead {
   location: string;
   requirement: string;
   solution: string;
+  /** One of BUDGET_OPTIONS, or empty when the visitor did not share one. */
+  budget: string;
   notes: string;
 }
 
@@ -38,6 +40,7 @@ export function validateLead(raw: unknown): { lead?: Lead; errors?: FieldErrors;
     location: clean(r.location, 100),
     requirement: clean(r.requirement, 1000),
     solution: clean(r.solution, 60),
+    budget: clean(r.budget, 80),
     notes: clean(r.notes, 1000),
   };
 
@@ -56,6 +59,8 @@ export function validateLead(raw: unknown): { lead?: Lead; errors?: FieldErrors;
 
   if (lead.solution && !LEAD_SOLUTION_OPTIONS.includes(lead.solution)) lead.solution = "Not sure yet";
   if (!lead.solution) lead.solution = "Not sure yet";
+  // Budget is optional and only accepted from the published bands; anything else is dropped.
+  if (!BUDGET_OPTIONS.includes(lead.budget)) lead.budget = "";
 
   return Object.keys(errors).length ? { errors } : { lead };
 }
@@ -71,6 +76,7 @@ function leadText(lead: Lead): string {
     `Email: ${lead.email || "-"}`,
     `Location: ${lead.location || "-"}`,
     `Relevant solution: ${lead.solution}`,
+    `Budget range: ${lead.budget || "Not shared"}`,
     `Requirement: ${lead.requirement}`,
     `Notes: ${lead.notes || "-"}`,
   ].join("\n");

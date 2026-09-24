@@ -126,7 +126,7 @@ export default function ChatPanel({ open, onClose }: Props) {
       // the tab order and the accessibility tree.
       {...(!open ? ({ inert: true } as unknown as HTMLAttributes<HTMLDivElement>) : {})}
       aria-hidden={!open}
-      className={`${jakarta.variable} fixed inset-0 z-[110] flex h-[100dvh] flex-col overflow-hidden bg-hero-bg font-jakarta text-hero-ink shadow-[0_20px_60px_rgba(15,40,90,0.22)] transition-all duration-200 ease-out sm:inset-auto sm:bottom-6 sm:right-6 sm:h-[min(680px,calc(100dvh-3rem))] sm:w-[400px] sm:rounded-3xl sm:border sm:border-stroke ${
+      className={`${jakarta.variable} fixed inset-0 z-[110] flex h-[100dvh] flex-col overflow-hidden bg-white/[0.88] font-jakarta text-hero-ink shadow-[0_20px_60px_rgba(15,40,90,0.28)] backdrop-blur-2xl backdrop-saturate-150 transition-all duration-200 ease-out sm:inset-auto sm:bottom-6 sm:right-6 sm:h-[min(680px,calc(100dvh-3rem))] sm:w-[400px] sm:rounded-3xl sm:border sm:border-stroke ${
         open ? "translate-y-0 opacity-100" : "pointer-events-none invisible translate-y-4 opacity-0 sm:scale-95"
       }`}
     >

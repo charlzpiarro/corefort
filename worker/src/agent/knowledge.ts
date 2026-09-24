@@ -31,6 +31,19 @@ export const SOLUTION_NAMES = [
 /** Values accepted by the lead form for the "relevant solution" field. */
 export const LEAD_SOLUTION_OPTIONS = [...SOLUTION_NAMES, "NetPurse", "LEDGE Biashara", "Cybersecurity", "Not sure yet"];
 
+/**
+ * Budget bands offered to visitors (optional). The Worker only accepts these exact values.
+ * Keep in sync with QUOTE_BUDGETS in components/CorefortAI/config.ts.
+ */
+export const BUDGET_OPTIONS = [
+  "Under TZS 5M (about USD 2,000)",
+  "TZS 5M to 20M (about USD 2,000 to 8,000)",
+  "TZS 20M to 50M (about USD 8,000 to 20,000)",
+  "TZS 50M to 100M (about USD 20,000 to 40,000)",
+  "Over TZS 100M (over USD 40,000)",
+  "Not sure yet, prefer to discuss",
+];
+
 export const CONTACT = {
   phone: company.phone,
   email: company.email,
@@ -40,7 +53,10 @@ export const CONTACT = {
 export const KNOWLEDGE_BASE = `
 COMPANY
 - Corefort Technologies is a technology company and technology partner that helps businesses build, secure, modernize and scale their technology infrastructure and operations.
-- Based in ${company.locations.join(" and ")}. Works with businesses across the region.
+- Registered in the United Republic of Tanzania and with BRELA (the Business Registrations and Licensing Agency). The registration number is not published.
+- Offices in ${company.locations.join(" and ")}. Works with businesses across the region.
+- Dar es Salaam office address: ${company.address}. The Zanzibar street address, opening hours and walk-in policy are not published. If a visitor wants to visit an office, ask them to contact the team first to arrange it.
+- FOUNDERS: Corefort has two founders. Mr. Charles Kikare Masima is the Chief Executive Officer (CEO). Mr. Iyanbinwell Mwakibinga is the Chief Technology Officer (CTO). Both are software engineers, entrepreneurs and cybersecurity enthusiasts. Nothing more about them is published (no education, age, earlier companies, achievements or personal contact details): if asked for more, say you don't have confirmed information on that and offer to connect the visitor with the team.
 - Also designs and operates its own products (NetPurse, LEDGE Biashara).
 
 CAPABILITY AREAS (what we do)

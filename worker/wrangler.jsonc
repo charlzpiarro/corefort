@@ -1,0 +1,45 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "corefort-ai",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-09-01",
+  "observability": { "enabled": true },
+  // Serve on <name>.<subdomain>.workers.dev only; no per-version preview URLs.
+  "workers_dev": true,
+  "preview_urls": false,
+
+  // Native Workers AI binding. No API token is needed when the Worker runs on Cloudflare.
+  "ai": { "binding": "AI" },
+
+  // Per-key rate limiting (hashed IP / session / global budget).
+  "durable_objects": { "bindings": [{ "name": "LIMITER", "class_name": "RateLimiter" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["RateLimiter"] }],
+
+  // OPTIONAL lead storage. Create with:  npx wrangler kv namespace create LEADS
+  // then paste the returned id below and uncomment.
+  // "kv_namespaces": [{ "binding": "LEADS", "id": "PASTE_KV_NAMESPACE_ID" }],
+
+  // OPTIONAL analytics (non-sensitive event counts). Uncomment to enable.
+  // "analytics_engine_datasets": [{ "binding": "ANALYTICS", "dataset": "corefort_ai_events" }],
+
+  // Non-secret configuration. Every value is documented in worker/README.md.
+  "vars": {
+    // Sender for quote-request emails. Must be on a domain verified in Resend.
+    "LEAD_FROM_EMAIL": "Corefort AI <ai@coreforttech.co.tz>",
+    "ALLOWED_ORIGINS": "https://coreforttech.co.tz,https://www.coreforttech.co.tz,http://localhost:3000,http://localhost:3010",
+    "AI_PROVIDER": "rest",
+    "AI_MODEL": "@cf/mistralai/mistral-small-3.1-24b-instruct",
+    "MAX_OUTPUT_TOKENS": "380",
+    "MAX_MESSAGE_CHARS": "600",
+    "MAX_HISTORY_MESSAGES": "12",
+    "RL_CHAT_IP_PER_MIN": "6",
+    "RL_CHAT_IP_PER_HOUR": "40",
+    "RL_CHAT_IP_PER_DAY": "120",
+    "RL_CHAT_SESSION_PER_HOUR": "30",
+    "GLOBAL_DAILY_CHAT_LIMIT": "90",
+    "RL_LEAD_IP_PER_HOUR": "5",
+    "RL_LEAD_IP_PER_DAY": "15",
+    "RL_EVENT_IP_PER_MIN": "60",
+    "LEAD_RETENTION_DAYS": "90"
+  }
+}

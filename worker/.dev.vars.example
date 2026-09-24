@@ -1,0 +1,18 @@
+# Copy to .dev.vars (gitignored) for local development. NEVER commit .dev.vars.
+#
+# "mock" = no Cloudflare calls at all (canned answers) - good for UI/security testing.
+# "binding" = real Workers AI through `wrangler dev` (needs `npx wrangler login`).
+# "rest" = real Workers AI through the REST API (needs the two values below).
+AI_PROVIDER=mock
+
+# Only required when AI_PROVIDER=rest
+CLOUDFLARE_ACCOUNT_ID=
+CLOUDFLARE_AI_TOKEN=
+
+# Optional lead delivery (see README)
+WEB3FORMS_ACCESS_KEY=
+LEAD_WEBHOOK_URL=
+
+# Email notifications for quote requests (Resend)
+RESEND_API_KEY=
+LEAD_NOTIFY_EMAIL=

@@ -179,6 +179,22 @@ export function NetworkMap() {
         </Geographies>
         </ComposableMap>
       </div>
+
+      {/* Glass chips floating over the globe edge. Dark-tinted so they stay readable on the light page. */}
+      <div
+        className="glass-strong absolute left-[-3%] top-[13%] flex items-center gap-2 rounded-full bg-ink/60 px-3.5 py-2 text-[11px] font-semibold text-white sm:left-[-6%] sm:text-xs"
+        style={{ background: "linear-gradient(135deg, rgba(5,6,10,0.72), rgba(5,6,10,0.5))" }}
+      >
+        <span className="h-2 w-2 rounded-full bg-amber shadow-[0_0_10px_2px_rgba(251,176,64,0.8)]" />
+        Hub: Dar es Salaam
+      </div>
+      <div
+        className="glass-strong absolute bottom-[12%] right-[-3%] flex items-center gap-2 rounded-full px-3.5 py-2 text-[11px] font-semibold text-white sm:right-[-6%] sm:text-xs"
+        style={{ background: "linear-gradient(135deg, rgba(5,6,10,0.72), rgba(5,6,10,0.5))" }}
+      >
+        <span className="h-2 w-2 rounded-full bg-[#7DF9FF] shadow-[0_0_10px_2px_rgba(125,249,255,0.7)]" />
+        Software · Cloud · Security
+      </div>
     </div>
   );
 }

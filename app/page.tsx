@@ -10,7 +10,6 @@ import CaseStudies from "@/components/CaseStudies";
 import Industries from "@/components/Industries";
 import WhyCorefort from "@/components/WhyCorefort";
 import Process from "@/components/Process";
-import Partners from "@/components/Partners";
 import Technology from "@/components/Technology";
 import Security from "@/components/Security";
 import Philosophy from "@/components/Philosophy";
@@ -36,6 +35,7 @@ export default function Home() {
     <>
       <ScrollUp />
       <Hero />
+      <Brands />
       <Metrics />
       <Services />
       <Solutions />
@@ -44,7 +44,6 @@ export default function Home() {
       <Industries />
       <WhyCorefort />
       <Process />
-      <Partners />
       <Technology />
       <Security />
       <Philosophy />
@@ -52,7 +51,6 @@ export default function Home() {
       <FAQ limit={4} compact />
       <SolutionFinder />
       <CTA />
-      <Brands />
       <Contact />
     </>
   );

@@ -1,4 +1,5 @@
 import SectionTitle from "@/components/Common/SectionTitle";
+import Stage from "@/components/Common/Stage";
 import Image from "next/image";
 import productsData from "@/components/Products/productsData";
 import caseStudiesData from "./caseStudiesData";
@@ -12,8 +13,8 @@ const FIELD_ORDER: { key: "challenge" | "solution" | "technology" | "outcome"; l
 
 const CaseStudies = () => {
   return (
-    <section id="work" className="scroll-mt-24 py-20 md:py-28">
-      <div className="container">
+    <Stage tone="tint" id="work">
+      <div>
         <div data-aos="fade-up">
           <SectionTitle
             eyebrow="Engineering in Practice"
@@ -38,7 +39,7 @@ const CaseStudies = () => {
                 <div
                   className={`relative flex min-h-[220px] flex-col justify-between overflow-hidden p-8 text-white ${
                     isSecondary
-                      ? "bg-[linear-gradient(145deg,#3B1E85_0%,#7C3AED_100%)]"
+                      ? "bg-[linear-gradient(145deg,#05060A_0%,#1a1a24_100%)]"
                       : "bg-[linear-gradient(145deg,#12225E_0%,#3A56E8_100%)]"
                   }`}
                 >
@@ -61,12 +62,12 @@ const CaseStudies = () => {
                   </span>
                 </div>
 
-                <div className="grid grid-cols-1 gap-6 bg-white p-8 dark:bg-navy-light sm:grid-cols-2 sm:p-10">
+                <div className="glass-light grid grid-cols-1 gap-6 !rounded-none p-8 sm:grid-cols-2 sm:p-10">
                   {FIELD_ORDER.map((field) => (
                     <div key={field.key}>
                       <p
                         className={`mb-2 text-xs font-semibold uppercase tracking-[0.15em] ${
-                          isSecondary ? "text-secondary" : "text-primary"
+                          isSecondary ? "text-amber-deep" : "text-primary"
                         }`}
                       >
                         {field.label}
@@ -82,7 +83,7 @@ const CaseStudies = () => {
           })}
         </div>
       </div>
-    </section>
+    </Stage>
   );
 };
 

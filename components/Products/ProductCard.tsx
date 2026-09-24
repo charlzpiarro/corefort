@@ -9,6 +9,8 @@ type Props = {
   reverse?: boolean;
   /** True on the product's own page: hides the link that would point back at itself. */
   onDetailPage?: boolean;
+  /** "dark" is for the black stage on the homepage; "light" is for the detail pages. */
+  tone?: "light" | "dark";
 };
 
 /** Brand panel: the official logo on the surface it was designed for. No invented numbers. */
@@ -28,7 +30,7 @@ const BrandPanel = ({ product }: { product: Product }) => {
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className={`absolute left-1/2 top-1/2 h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2 rounded-full border ${dark ? "border-white/[0.06]" : "border-primary/10"}`} />
         <div className={`absolute left-1/2 top-1/2 h-[85%] w-[85%] -translate-x-1/2 -translate-y-1/2 rounded-full border ${dark ? "border-white/[0.08]" : "border-primary/[0.14]"}`} />
-        <div className={`absolute left-1/2 top-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl ${dark ? "bg-white/[0.06]" : "bg-emerald-300/25"}`} />
+        <div className={`absolute left-1/2 top-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl ${dark ? "bg-amber/[0.12]" : "bg-emerald-300/25"}`} />
       </div>
 
       <div className="relative z-10 flex flex-col items-center">
@@ -63,35 +65,40 @@ const BrandPanel = ({ product }: { product: Product }) => {
   );
 };
 
-const ProductCard = ({ product, reverse, onDetailPage = false }: Props) => {
-  const isSecondary = product.accent === "secondary";
-  const linkTone = isSecondary ? "text-secondary hover:text-secondary/80" : "text-primary hover:text-primary/80";
+const ProductCard = ({ product, reverse, onDetailPage = false, tone = "light" }: Props) => {
+  // LEDGE (black) is accented in amber; NetPurse (blue) in blue.
+  const amber = product.accent === "secondary";
+  const onDark = tone === "dark";
+
+  const chip = onDark
+    ? amber ? "bg-amber/[0.15] text-amber" : "bg-primary/25 text-[#9DB0FF]"
+    : amber ? "bg-amber/20 text-amber-deep" : "bg-primary/10 text-primary";
+  const tick = onDark
+    ? amber ? "bg-amber/20 text-amber" : "bg-primary/25 text-[#9DB0FF]"
+    : amber ? "bg-amber/25 text-amber-deep" : "bg-primary/[0.15] text-primary";
+  const linkTone = onDark
+    ? amber ? "text-amber hover:text-amber-soft" : "text-[#9DB0FF] hover:text-white"
+    : amber ? "text-amber-deep hover:text-ink" : "text-primary hover:text-primary/80";
 
   return (
     <div
       id={product.id}
-      className="scroll-mt-32 grid items-center gap-10 rounded-3xl border border-stroke bg-white p-6 shadow-card dark:border-white/10 dark:bg-navy-light dark:shadow-card-dark sm:p-8 lg:grid-cols-2 lg:gap-14 lg:p-12"
+      className={`scroll-mt-32 grid items-center gap-10 rounded-3xl p-6 sm:p-8 lg:grid-cols-2 lg:gap-14 lg:p-12 ${
+        onDark ? "glass" : "border border-stroke bg-white shadow-card dark:border-white/10 dark:bg-navy-light dark:shadow-card-dark"
+      }`}
     >
       <div className={reverse ? "lg:order-2" : ""}>
-        <span
-          className={`mb-5 inline-flex rounded-full px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.15em] ${
-            isSecondary ? "bg-secondary/10 text-secondary" : "bg-primary/10 text-primary"
-          }`}
-        >
+        <span className={`mb-5 inline-flex rounded-full px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.15em] ${chip}`}>
           {product.category}
         </span>
-        <h3 className="mb-3 text-2xl font-bold text-black dark:text-white sm:text-3xl">{product.name}</h3>
-        <p className="mb-6 max-w-[460px] text-base leading-relaxed text-body-color dark:text-body-color-dark">
+        <h3 className={`mb-3 text-2xl font-bold sm:text-3xl ${onDark ? "text-white" : "text-black dark:text-white"}`}>{product.name}</h3>
+        <p className={`mb-6 max-w-[460px] text-base leading-relaxed ${onDark ? "text-white/[0.72]" : "text-body-color dark:text-body-color-dark"}`}>
           {product.description}
         </p>
         <ul className="mb-8 grid gap-3 sm:grid-cols-2">
           {product.features.map((feature) => (
-            <li key={feature} className="flex items-start gap-2.5 text-sm text-dark dark:text-white/80">
-              <span
-                className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
-                  isSecondary ? "bg-secondary/[0.15] text-secondary" : "bg-primary/[0.15] text-primary"
-                }`}
-              >
+            <li key={feature} className={`flex items-start gap-2.5 text-sm ${onDark ? "text-white/[0.85]" : "text-dark dark:text-white/80"}`}>
+              <span className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${tick}`}>
                 <IconCheck className="h-3 w-3" />
               </span>
               {feature}
@@ -114,12 +121,14 @@ const ProductCard = ({ product, reverse, onDetailPage = false }: Props) => {
               className={`group inline-flex items-center gap-2 text-sm font-semibold transition ${
                 onDetailPage
                   ? "rounded-xl bg-primary px-5 py-2.5 text-white hover:bg-primary/90"
-                  : "text-dark hover:text-primary dark:text-white"
+                  : onDark
+                    ? "text-white hover:text-amber"
+                    : "text-dark hover:text-primary dark:text-white"
               }`}
             >
               {product.external.label}
               <span className="sr-only"> (opens in a new tab)</span>
-              <IconArrowRight className="h-4 w-4 -rotate-45 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <IconArrowRight className="h-4 w-4 -rotate-45 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
           )}
         </div>

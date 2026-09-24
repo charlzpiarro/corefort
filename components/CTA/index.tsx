@@ -6,7 +6,7 @@ const CTA = () => {
     <section className="py-16 md:py-24">
       <div className="container">
         <div
-          className="relative overflow-hidden rounded-3xl bg-[linear-gradient(135deg,#0B1230_0%,#3A56E8_55%,#7C3AED_100%)] px-6 py-16 text-center sm:px-10 md:px-16 md:py-20"
+          className="relative overflow-hidden rounded-3xl bg-[linear-gradient(135deg,#05060A_0%,#12225E_45%,#3A56E8_100%)] px-6 py-16 text-center sm:px-10 md:px-16 md:py-20"
           data-aos="fade-up"
         >
           <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid-dark opacity-20" />
@@ -25,14 +25,14 @@ const CTA = () => {
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 rounded-xl bg-white px-7 py-3.5 text-sm font-semibold text-primary transition duration-300 hover:-translate-y-0.5 hover:bg-white/90 sm:text-base"
+                className="group inline-flex items-center gap-2 rounded-xl bg-amber px-7 py-3.5 text-sm font-bold text-ink shadow-glow-amber transition duration-300 hover:-translate-y-0.5 hover:bg-amber-soft sm:text-base"
               >
                 Start a Project
                 <IconArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-xl border border-white/40 px-7 py-3.5 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-white/10 sm:text-base"
+                className="inline-flex items-center gap-2 rounded-xl glass px-7 py-3.5 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-white/10 sm:text-base"
               >
                 Talk to Corefort
               </Link>

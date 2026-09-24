@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import SectionTitle from "@/components/Common/SectionTitle";
+import Stage from "@/components/Common/Stage";
 import { IconCheck } from "@/components/Common/UiIcons";
 import { IconArrowRight } from "@/components/Common/BrandIcons";
 import solutionsData from "@/components/Solutions/solutionsData";
@@ -53,20 +54,21 @@ const SolutionFinder = () => {
   const product = productsData.find((p) => p.id === selectedIndustry?.productId);
 
   return (
-    <section className="py-20 md:py-28">
-      <div className="container">
+    <Stage tone="ink">
+      <div>
         <div data-aos="fade-up">
           <SectionTitle
             eyebrow="Solution Finder"
             title="Not Sure What You Need?"
             paragraph="Answer three quick questions and we'll point you to the right solution, no sales call required to find out."
             center
+            light
             mb="48px"
           />
         </div>
 
         <div
-          className="mx-auto max-w-2xl rounded-3xl border border-stroke bg-white p-6 shadow-card dark:border-white/10 dark:bg-navy-light sm:p-8"
+          className="glass-strong mx-auto max-w-2xl rounded-3xl p-6 sm:p-8"
           data-aos="fade-up"
         >
           {/* Progress */}
@@ -75,7 +77,7 @@ const SolutionFinder = () => {
               <div key={label} className="flex flex-1 items-center gap-2">
                 <div
                   className={`h-1.5 flex-1 rounded-full transition-colors ${
-                    i <= step ? "bg-primary" : "bg-stroke dark:bg-white/10"
+                    i <= step ? "bg-amber" : "bg-white/[0.15]"
                   }`}
                 />
               </div>
@@ -119,29 +121,29 @@ const SolutionFinder = () => {
 
           {step === 3 && solution && (
             <div>
-              <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
+              <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-amber/20 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber">
                 <IconCheck className="h-3.5 w-3.5" />
                 Recommended Solution
               </span>
-              <h3 className="mb-2 text-2xl font-bold text-black dark:text-white">{solution.title}</h3>
-              <p className="mb-6 text-sm leading-relaxed text-body-color dark:text-body-color-dark">
+              <h3 className="mb-2 text-2xl font-bold text-white">{solution.title}</h3>
+              <p className="mb-6 text-sm leading-relaxed text-white/[0.72]">
                 {solution.problem} Based on what you told us, this is where we'd start.
               </p>
 
               {product && (
-                <div className="mb-6 rounded-2xl border border-stroke bg-gray-light p-4 dark:border-white/10 dark:bg-bg-color-dark">
-                  <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-body-color dark:text-body-color-dark">
+                <div className="mb-6 rounded-2xl border border-white/10 bg-ink/40 p-4">
+                  <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-amber">
                     Relevant product
                   </p>
-                  <p className="text-sm font-bold text-black dark:text-white">{product.name}</p>
-                  <p className="text-sm text-body-color dark:text-body-color-dark">{product.description}</p>
+                  <p className="text-sm font-bold text-white">{product.name}</p>
+                  <p className="text-sm text-white/[0.7]">{product.description}</p>
                 </div>
               )}
 
               <div className="flex flex-wrap gap-3">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-white transition hover:bg-primary/90"
+                  className="inline-flex items-center gap-2 rounded-xl bg-amber px-6 py-3 text-sm font-bold text-ink transition hover:bg-amber-soft"
                 >
                   Talk to Our Team
                   <IconArrowRight className="h-4 w-4" />
@@ -149,7 +151,7 @@ const SolutionFinder = () => {
                 {solution.href && (
                   <Link
                     href={solution.href}
-                    className="inline-flex items-center gap-2 rounded-xl border border-stroke px-6 py-3 text-sm font-semibold text-dark transition hover:border-primary/40 hover:text-primary dark:border-white/10 dark:text-white"
+                    className="inline-flex items-center gap-2 rounded-xl border border-white/25 px-6 py-3 text-sm font-semibold text-white transition hover:border-white hover:bg-white/10"
                   >
                     Learn More
                   </Link>
@@ -157,7 +159,7 @@ const SolutionFinder = () => {
                 <button
                   type="button"
                   onClick={reset}
-                  className="inline-flex items-center gap-2 px-2 py-3 text-sm font-semibold text-body-color underline-offset-2 hover:text-primary hover:underline dark:text-body-color-dark"
+                  className="inline-flex items-center gap-2 px-2 py-3 text-sm font-semibold text-white/60 underline-offset-2 hover:text-amber hover:underline"
                 >
                   Start Over
                 </button>
@@ -166,7 +168,7 @@ const SolutionFinder = () => {
           )}
         </div>
       </div>
-    </section>
+    </Stage>
   );
 };
 
@@ -183,14 +185,14 @@ function FinderStep<T extends { id: string; label: string }>({
 }) {
   return (
     <div>
-      <h3 className="mb-5 text-lg font-bold text-black dark:text-white sm:text-xl">{question}</h3>
+      <h3 className="mb-5 text-lg font-bold text-white sm:text-xl">{question}</h3>
       <div className="grid gap-3 sm:grid-cols-2">
         {options.map((option) => (
           <button
             key={option.id}
             type="button"
             onClick={() => onSelect(option.id)}
-            className="rounded-xl border border-stroke bg-white px-4 py-3.5 text-left text-sm font-medium text-dark transition hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-white/10 dark:bg-bg-color-dark dark:text-white"
+            className="rounded-xl border border-white/[0.15] bg-white/[0.06] px-4 py-3.5 text-left text-sm font-medium text-white transition hover:border-amber hover:bg-amber/10"
           >
             {option.label}
           </button>
@@ -200,7 +202,7 @@ function FinderStep<T extends { id: string; label: string }>({
         <button
           type="button"
           onClick={onBack}
-          className="mt-5 text-sm font-medium text-body-color hover:text-primary dark:text-body-color-dark"
+          className="mt-5 text-sm font-medium text-white/60 hover:text-amber"
         >
           ← Back
         </button>

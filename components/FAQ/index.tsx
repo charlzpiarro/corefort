@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { IconChevronDown } from "@/components/Common/UiIcons";
 import { IconArrowRight } from "@/components/Common/BrandIcons";
+import Stage from "@/components/Common/Stage";
 import faqData, { FAQCategory } from "./faqData";
 
 const CATEGORIES: FAQCategory[] = ["General", "Services", "Security", "Projects"];
@@ -27,6 +28,34 @@ const FAQ = ({ limit, compact }: FAQProps) => {
       }));
 
   let runningIndex = 0;
+
+  if (compact) {
+    return (
+      <Stage tone="tint">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
+          <div className="lg:sticky lg:top-32 lg:self-start" data-aos="fade-up">
+            <p className="mb-4 inline-flex rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+              FAQ
+            </p>
+            <h2 className="mb-4 text-4xl font-extrabold leading-[1.05] text-ink sm:text-5xl">Common Questions</h2>
+            <p className="mb-8 max-w-[40ch] text-lg leading-relaxed text-hero-body">
+              Straight answers about how Corefort works, what we build, and how projects run.
+            </p>
+            <Link href="/faq" className="group inline-flex items-center gap-2 rounded-xl bg-ink px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-primary">
+              View All FAQs
+              <IconArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </div>
+
+          <div className="flex flex-col gap-3" data-aos="fade-up" data-aos-delay="80">
+            {items.map((item, index) => (
+              <FAQItemCard key={item.q} item={item} index={index} openIndex={openIndex} setOpenIndex={setOpenIndex} glass />
+            ))}
+          </div>
+        </div>
+      </Stage>
+    );
+  }
 
   return (
     <section className={compact ? "py-20 md:py-28" : "pb-16 pt-6 sm:pb-20 sm:pt-8 lg:pb-24"}>
@@ -85,7 +114,9 @@ function FAQItemCard({
   index,
   openIndex,
   setOpenIndex,
+  glass = false,
 }: {
+  glass?: boolean;
   item: { q: string; a: string };
   index: number;
   openIndex: number | null;
@@ -93,7 +124,7 @@ function FAQItemCard({
 }) {
   const isOpen = openIndex === index;
   return (
-    <div className="overflow-hidden rounded-2xl border border-stroke bg-white shadow-one transition dark:border-stroke-dark dark:bg-dark">
+    <div className={`overflow-hidden rounded-2xl transition ${glass ? `glass-light ${isOpen ? "!border-amber/60 shadow-glow-amber" : ""}` : "border border-stroke bg-white shadow-one dark:border-stroke-dark dark:bg-dark"}`}>
       <button
         type="button"
         id={`faq-trigger-${index}`}

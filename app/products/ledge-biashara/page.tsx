@@ -56,7 +56,7 @@ export default function LedgeBiasharaPage() {
               <ul className="space-y-2.5">
                 {TARGET_USERS.map((user) => (
                   <li key={user} className="flex items-start gap-2.5 text-base text-dark dark:text-white/[0.85]">
-                    <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-secondary/10 text-secondary">
+                    <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber/25 text-amber-deep">
                       <IconCheck className="h-3 w-3" />
                     </span>
                     {user}
@@ -93,7 +93,7 @@ export default function LedgeBiasharaPage() {
           <div className="mt-12 text-center">
             <Link
               href="/contact"
-              className="group inline-flex items-center gap-2 rounded-xl bg-secondary px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-secondary/90"
+              className="group inline-flex items-center gap-2 rounded-xl bg-ink px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-ink/[0.85]"
             >
               Talk to Us About LEDGE Biashara
               <IconArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

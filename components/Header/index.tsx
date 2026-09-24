@@ -15,7 +15,7 @@ const Header = () => {
   const [announcementVisible, setAnnouncementVisible] = useState(true);
 
   return (
-    <div className={`${jakarta.variable} sticky top-0 z-50 bg-white font-jakarta shadow-[0_1px_0_rgba(15,23,42,0.06)]`}>
+    <div className={`${jakarta.variable} sticky top-0 z-50 bg-white/[0.82] font-jakarta shadow-[0_1px_0_rgba(15,23,42,0.06)] backdrop-blur-xl backdrop-saturate-150`}>
       <AnnouncementBar
         visible={announcementVisible}
         onClose={() => setAnnouncementVisible(false)}

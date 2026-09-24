@@ -40,6 +40,55 @@
   background-size: 44px 44px;
 }
 
+/* ---- Glass surfaces (use on colourful or dark backdrops; on flat white they read as grey boxes) ---- */
+.glass {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.04));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 18px 50px -18px rgba(0, 0, 0, 0.55);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  backdrop-filter: blur(18px) saturate(150%);
+}
+.glass-strong {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.07));
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 22px 60px -20px rgba(0, 0, 0, 0.6);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  backdrop-filter: blur(22px) saturate(160%);
+}
+.glass-light {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.5));
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 18px 50px -20px rgba(37, 99, 235, 0.28);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(160%);
+}
+/* No backdrop-filter support: fall back to solid, readable surfaces */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass,
+  .glass-strong {
+    background: rgba(14, 19, 38, 0.94);
+  }
+  .glass-light {
+    background: rgba(255, 255, 255, 0.96);
+  }
+}
+/* Lighter blur on phones: backdrop-filter is expensive on mid-range devices */
+@media (max-width: 640px) {
+  .glass,
+  .glass-strong,
+  .glass-light {
+    -webkit-backdrop-filter: blur(10px) saturate(140%);
+    backdrop-filter: blur(10px) saturate(140%);
+  }
+}
+
+.text-gradient-amber {
+  background: linear-gradient(135deg, #ffd58a 0%, #fbb040 55%, #e8930c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 .text-gradient-brand {
   background: linear-gradient(135deg, #3a56e8 0%, #7c3aed 100%);
   -webkit-background-clip: text;

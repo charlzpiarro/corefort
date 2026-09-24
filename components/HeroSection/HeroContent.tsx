@@ -8,7 +8,7 @@ import { ArrowRightIcon, GridIcon } from "./icons";
 
 const TRUST_BADGES = [
   { initials: "NP", from: "#2563EB", to: "#60A5FA" },
-  { initials: "LB", from: "#7C3AED", to: "#A78BFA" },
+  { initials: "LB", from: "#05060A", to: "#3a3a46" },
   { initials: "CF", from: "#0EA5E9", to: "#38BDF8" },
 ];
 
@@ -84,8 +84,8 @@ export function HeroContent() {
               ))}
             </div>
             <p className="text-sm text-hero-body">
-              Trusted by <span className="font-semibold text-hero-ink">businesses &amp; ISPs</span>{" "}
-              across East Africa
+              Home of <span className="font-semibold text-hero-ink">NetPurse &amp; LEDGE Biashara</span>,{" "}
+              built in Dar es Salaam
             </p>
           </motion.div>
         </motion.div>

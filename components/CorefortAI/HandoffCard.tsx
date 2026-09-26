@@ -31,7 +31,7 @@ export default function HandoffCard({ onQuote }: { onQuote: () => void }) {
           Contact page
         </a>
       </div>
-      <p className="mt-3 text-[13px] leading-relaxed text-hero-body">{company.locations.join(" · ")}</p>
+      <p className="mt-3 text-[13px] leading-relaxed text-hero-body">{company.address} · Zanzibar, Tanzania</p>
       <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
         {company.social.map((s) => (
           <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="text-[13px] font-medium text-hero-primary underline underline-offset-2">

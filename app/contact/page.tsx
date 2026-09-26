@@ -1,6 +1,7 @@
 import Breadcrumb from "@/components/Common/Breadcrumb";
 import Contact from "@/components/Contact";
 import Link from "next/link";
+import company from "@/shared/corefort-company.json";
 
 import { Metadata } from "next";
 
@@ -35,7 +36,21 @@ const ContactPage = () => {
             <div className="rounded-2xl border border-stroke bg-white p-5 dark:border-stroke-dark dark:bg-dark">
               <p className="text-sm font-semibold text-primary">Locations</p>
               <p className="mt-2 text-sm leading-relaxed text-body-color dark:text-body-color-dark sm:text-base">
-                Dar es Salaam, Tanzania
+                <span className="font-medium text-dark dark:text-white">Dar es Salaam</span>
+                <br />
+                {company.address}
+                <br />
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(company.address)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary underline underline-offset-2"
+                >
+                  View on map<span className="sr-only"> (opens in a new tab)</span>
+                </a>
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-body-color dark:text-body-color-dark sm:text-base">
+                <span className="font-medium text-dark dark:text-white">Zanzibar</span>
                 <br />
                 Zanzibar, Tanzania
               </p>

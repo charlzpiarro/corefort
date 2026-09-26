@@ -110,13 +110,10 @@ const Footer = () => {
                 </a>
               </li>
               <li className="leading-relaxed">
-                <span className="block font-medium text-white/[0.85]">Locations</span>
-                {company.locations.map((loc, i) => (
-                  <span key={loc}>
-                    {i > 0 && <br />}
-                    {loc}
-                  </span>
-                ))}
+                <span className="block font-medium text-white/[0.85]">Dar es Salaam</span>
+                {company.address}
+                <span className="mt-3 block font-medium text-white/[0.85]">Zanzibar</span>
+                Zanzibar, Tanzania
               </li>
             </ul>
           </div>

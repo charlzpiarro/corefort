@@ -72,7 +72,7 @@ export function HeroContent() {
           </motion.div>
 
           <motion.div variants={itemVariants} className="mt-10 flex items-center gap-3">
-            <div className="flex -space-x-3">
+            <div className="flex -space-x-3" aria-hidden="true">
               {TRUST_BADGES.map((badge) => (
                 <span
                   key={badge.initials}

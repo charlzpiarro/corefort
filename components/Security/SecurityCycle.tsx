@@ -203,9 +203,6 @@ export default function SecurityCycle() {
                     <Icon className="h-5 w-5" />
                   </span>
                   <span className="min-w-0 flex-1">
-                    <span className="block text-[11px] font-semibold uppercase tracking-[0.16em] text-white/[0.45]">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
                     <span className="block text-base font-bold text-white">{practice.title}</span>
                   </span>
                 </span>

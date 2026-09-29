@@ -3,20 +3,14 @@ import ScrollUp from "@/components/Common/ScrollUp";
 import Contact from "@/components/Contact";
 import { HeroContent as Hero } from "@/components/HeroSection/HeroContent";
 import Metrics from "@/components/Metrics";
-import Services from "@/components/Services";
-import Solutions from "@/components/Solutions";
 import Products from "@/components/Products";
-import CaseStudies from "@/components/CaseStudies";
+import WhatWeBuild from "@/components/WhatWeBuild";
 import Industries from "@/components/Industries";
-import WhyCorefort from "@/components/WhyCorefort";
 import Process from "@/components/Process";
-import Technology from "@/components/Technology";
 import Security from "@/components/Security";
-import Philosophy from "@/components/Philosophy";
+import HomeAbout from "@/components/HomeAbout";
 import InsightsPreview from "@/components/Insights/InsightsPreview";
 import FAQ from "@/components/FAQ";
-import SolutionFinder from "@/components/SolutionFinder";
-import CTA from "@/components/CTA";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -28,6 +22,7 @@ export const metadata: Metadata = {
   publisher: "Corefort Technologies",
   description:
     "Corefort Technologies builds secure, scalable software, infrastructure, and digital platforms, spanning software engineering, cloud, cybersecurity, fintech, connectivity, and AI.",
+  alternates: { canonical: "/" },
 };
 
 export default function Home() {
@@ -35,23 +30,17 @@ export default function Home() {
     <>
       <ScrollUp />
       <Hero />
-      <Brands />
       <Metrics />
-      <Services />
-      <Solutions />
+      <Brands />
       <Products />
-      <CaseStudies />
+      <WhatWeBuild />
       <Industries />
-      <WhyCorefort />
-      <Process />
-      <Technology />
       <Security />
-      <Philosophy />
+      <Process />
+      <HomeAbout />
       <InsightsPreview />
       <FAQ limit={4} compact />
-      <SolutionFinder />
-      <CTA />
-      <Contact />
+      <Contact showIntro />
     </>
   );
 }

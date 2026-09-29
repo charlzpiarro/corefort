@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "LEDGE Biashara | Corefort Technologies",
   description:
     "LEDGE Biashara is a business management and point-of-sale platform designed for SMEs, built offline-first for real operating conditions.",
+  alternates: { canonical: "/products/ledge-biashara" },
 };
 
 const ledge = productsData.find((p) => p.id === "product-ledge-biashara")!;

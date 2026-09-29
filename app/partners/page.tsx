@@ -8,6 +8,7 @@ import CTA from "@/components/CTA";
 export const metadata: Metadata = {
   title: "Partners | Corefort Technologies",
   description: "The partner ecosystem behind Corefort Technologies' products and services.",
+  alternates: { canonical: "/partners" },
 };
 
 export default function PartnersPage() {

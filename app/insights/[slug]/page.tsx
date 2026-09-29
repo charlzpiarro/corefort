@@ -19,6 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   return {
     title: `${post.title} | Corefort Insights`,
     description: post.summary,
+    alternates: { canonical: `/insights/${slug}` },
   };
 }
 

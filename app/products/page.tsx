@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Products | Corefort Technologies",
   description:
     "NetPurse and LEDGE Biashara: technology products designed, built, and operated by Corefort Technologies.",
+  alternates: { canonical: "/products" },
 };
 
 export default function ProductsPage() {

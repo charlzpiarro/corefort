@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: "Company | Corefort Technologies",
   description:
     "Corefort Technologies' mission, vision, values, and philosophy on building technology.",
+  alternates: { canonical: "/company" },
 };
 
 const PILLARS = [

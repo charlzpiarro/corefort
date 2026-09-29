@@ -44,12 +44,16 @@ module.exports = {
         // Brand system: black (LEDGE) + blue (Corefort/NetPurse) + amber (accent, used sparingly)
         ink: "#05060A",
         "ink-2": "#0A0E1A",
-        amber: { DEFAULT: "#FBB040", soft: "#FFD58A", deep: "#E8930C" },
+        // deep: was #E8930C (2.44:1 on white — fails WCAG AA's 4.5:1 for text under 18pt,
+        // apple-design skill / accessibility.md). #9C5D08 clears 4.5:1 on white and hero-bg.
+        amber: { DEFAULT: "#FBB040", soft: "#FFD58A", deep: "#9C5D08" },
         tint: "#EEF3FF",
         navy: "#080B14",
         "navy-light": "#0E1326",
         "navy-border": "#1E2440",
-        "body-color": "#788293",
+        // Was #788293 (3.88:1 on white, 3.47:1 on gray-light) — fails 4.5:1 for the small body
+        // text it's actually used for. #61697C clears both (5.50:1 / 4.91:1).
+        "body-color": "#61697C",
         "body-color-dark": "#959CB1",
         "gray-dark": "#1E232E",
         "gray-light": "#F0F2F9",
@@ -64,7 +68,9 @@ module.exports = {
         "hero-primary-light": "#DBEAFE",
         "hero-ink": "#0A0F1C",
         "hero-body": "#475569",
-        "hero-muted": "#94A3B8",
+        // Was #94A3B8 (2.41:1 on hero-bg) — used for real content (field hints, disclaimers,
+        // summary labels), not just placeholders, so it needs the 4.5:1 floor. #5B6A82 clears it.
+        "hero-muted": "#5B6A82",
       },
 
       backgroundImage: {

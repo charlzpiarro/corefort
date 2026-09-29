@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Payment & Financial Systems | Corefort Technologies",
   description:
     "Corefort builds payment infrastructure and financial systems for ISPs, hotspot operators, and businesses that need reliable transaction handling.",
+  alternates: { canonical: "/solutions/payment-financial-systems" },
 };
 
 const OUTCOMES = [

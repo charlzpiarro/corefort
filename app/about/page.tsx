@@ -9,7 +9,8 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Us | Corefort Technologies",
   description:
-    "Learn more about Corefort Technologies, your partner in Web & Mobile Development, Cybersecurity, Enterprise Solutions, and IT Consulting across Africa and beyond.",
+    "Corefort Technologies' mission, focus areas, and approach to building software, infrastructure, and security for businesses in Tanzania and the region.",
+  alternates: { canonical: "/about" },
 };
 
 const AboutPage = () => {

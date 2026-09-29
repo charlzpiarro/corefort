@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "FAQ | Corefort Technologies",
   description:
     "Frequently asked questions about Corefort services, support, project delivery, and security.",
+  alternates: { canonical: "/faq" },
 };
 
 const FAQPage = () => {

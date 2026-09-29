@@ -81,6 +81,22 @@
     backdrop-filter: blur(10px) saturate(140%);
   }
 }
+/* "Reduce Transparency" (macOS/iOS) and the equivalent Windows/browser setting: opaque fallback,
+   same rule the apple-design skill's Liquid Glass checklist asks for ("Reduce Transparency gets
+   an opaque fallback"). No blur is drawn at all, not just a less-see-through one. */
+@media (prefers-reduced-transparency: reduce) {
+  .glass,
+  .glass-strong {
+    background: rgba(14, 19, 38, 0.96);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .glass-light {
+    background: rgba(255, 255, 255, 0.98);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
 
 .text-gradient-amber {
   background: linear-gradient(135deg, #ffd58a 0%, #fbb040 55%, #e8930c 100%);

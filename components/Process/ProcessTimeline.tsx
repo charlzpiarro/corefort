@@ -41,7 +41,7 @@ export default function ProcessTimeline() {
                   className={`relative ${up ? "row-start-1 flex items-end pb-6" : "row-start-3 flex items-start pt-6"}`}
                   style={{ gridColumnStart: i + 1 }}
                 >
-                  <div className="glass-light w-full rounded-2xl p-5 transition duration-300 hover:-translate-y-1">
+                  <div className="w-full rounded-2xl border border-stroke bg-white p-5 shadow-card transition duration-300 hover:-translate-y-1">
                     <p className="mb-1 text-xs font-bold tracking-[0.2em] text-amber-deep">{step.number}</p>
                     <h3 className="mb-1.5 text-lg font-bold text-ink">{step.title}</h3>
                     <p className="text-sm leading-relaxed text-hero-body">{step.description}</p>
@@ -87,7 +87,7 @@ export default function ProcessTimeline() {
               >
                 <Icon className="h-6 w-6" />
               </span>
-              <div className="glass-light flex-1 rounded-2xl p-5">
+              <div className="flex-1 rounded-2xl border border-stroke bg-white p-5 shadow-card">
                 <p className="mb-1 text-xs font-bold tracking-[0.2em] text-amber-deep">{step.number}</p>
                 <h3 className="mb-1.5 text-lg font-bold text-ink">{step.title}</h3>
                 <p className="text-sm leading-relaxed text-hero-body">{step.description}</p>

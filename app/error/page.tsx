@@ -3,9 +3,10 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Error Page | Corefort Technologies",
-  description: "This is Error Page for Corefort Technologies",
-  // other metadata
+  title: "Page Not Found",
+  description: "The page you were looking for could not be found.",
+  robots: { index: false, follow: true },
+  alternates: { canonical: "/error" },
 };
 
 const ErrorPage = () => {

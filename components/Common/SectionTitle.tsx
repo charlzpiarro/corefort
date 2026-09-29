@@ -24,7 +24,7 @@ const SectionTitle = ({
       >
         {eyebrow && (
           <p
-            className={`mb-4 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] ${
+            className={`mb-4 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-semibold tracking-wide ${
               light
                 ? "border-white/20 bg-white/[0.06] text-white/80"
                 : "border-primary/20 bg-primary/5 text-primary"

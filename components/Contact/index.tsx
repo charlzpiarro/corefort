@@ -1,22 +1,29 @@
 "use client";
 import { useEffect, useState } from "react";
-import NewsLatterBox from "./NewsLatterBox";
+import Image from "next/image";
 import { IconErrorCircle, IconSuccessCircle } from "../Common/UiIcons";
 import Confetti from "react-confetti";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const Contact = () => {
+type ContactProps = {
+  /** Homepage only: shows the "Let's build" banner and photo above the form. */
+  showIntro?: boolean;
+};
+
+const Contact = ({ showIntro = false }: ContactProps) => {
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     message: "",
+    updates: false,
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, type, value, checked } = e.target;
+    setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
   };
 
   const handleSubmit = async (e) => {
@@ -33,12 +40,13 @@ const Contact = () => {
           email: formData.email,
           phone: formData.phone,
           message: formData.message,
+          subscribe_to_updates: formData.updates ? "Yes" : "No",
         }),
       });
 
       if (res.ok) {
         setStatus("success");
-        setFormData({ name: "", email: "", phone: "", message: "" });
+        setFormData({ name: "", email: "", phone: "", message: "", updates: false });
         setTimeout(() => setStatus("idle"), 5000);
       } else {
         setStatus("error");
@@ -67,19 +75,41 @@ const Contact = () => {
       data-aos-delay="200"
     >
       {status === "success" && <Confetti numberOfPieces={200} />}
-      <div className="container">
-        <div className="-mx-3 flex flex-wrap">
+      <div className="container max-w-4xl">
+        {showIntro && (
           <div
-            className="w-full px-3 lg:w-7/12 xl:w-8/12"
+            className="relative mb-10 overflow-hidden rounded-3xl bg-[#0632C4] shadow-[0_40px_90px_-40px_rgba(6,50,196,0.8)]"
             data-aos="fade-up"
-            data-aos-delay="300"
           >
-            <div className="mb-8 rounded-2xl bg-white px-4 py-7 shadow-three dark:bg-gray-dark sm:px-6 sm:py-9 lg:mb-5 lg:px-8 xl:px-10">
+            <div className="relative h-[200px] sm:h-[240px] md:h-[280px]">
+              <Image
+                src="/images/photos/robot-corefort.webp"
+                alt="A robotic hand holding a glass card that shows the Corefort logo"
+                fill
+                sizes="(min-width: 1280px) 900px, 100vw"
+                className="object-cover object-[80%_35%]"
+              />
+              <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(0deg,#0632C4_0%,rgba(6,50,196,0.15)_65%)]" />
+              <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid-dark opacity-[0.12]" />
+            </div>
+            <div className="relative px-6 pb-8 pt-1 sm:px-10">
+              <h2 className="mb-3 max-w-[36ch] text-2xl font-extrabold leading-[1.15] text-white sm:text-3xl">
+                Let&apos;s build what comes next.
+              </h2>
+              <p className="max-w-[54ch] text-sm leading-relaxed text-white/[0.82] sm:text-base">
+                Whether you&apos;re modernizing an existing system or building something entirely new, tell us about it below.
+              </p>
+            </div>
+          </div>
+        )}
+
+        <div data-aos="fade-up" data-aos-delay="300">
+            <div className="mb-8 rounded-2xl bg-white px-4 py-7 shadow-three dark:bg-gray-dark sm:px-6 sm:py-9 lg:px-8 xl:px-10">
               <h2 className="mb-3 text-2xl font-bold text-black dark:text-white sm:text-3xl">
-                Need Help? Open a Ticket
+                Talk to Corefort
               </h2>
               <p className="mb-8 text-sm font-medium text-body-color sm:mb-10 sm:text-base">
-                Our support team will get back to you ASAP via email.
+                Tell us what you need. Our team will review it and get back to you by email.
               </p>
 
               {/* Toasts */}
@@ -170,26 +200,30 @@ const Contact = () => {
                   </div>
 
                   <div className="w-full px-2">
+                    <label className="mb-5 flex items-start gap-2.5 text-sm text-body-color dark:text-body-color-dark sm:mb-6">
+                      <input
+                        type="checkbox"
+                        name="updates"
+                        checked={formData.updates}
+                        onChange={handleChange}
+                        className="mt-0.5 h-4 w-4 shrink-0 rounded border-stroke text-primary focus:ring-primary dark:border-stroke-dark"
+                      />
+                      Also send me occasional product updates and announcements. No spam, ever.
+                    </label>
+                  </div>
+
+                  <div className="w-full px-2">
                     <button
                       type="submit"
                       disabled={status === "loading"}
                       className="w-full rounded-xl bg-primary px-6 py-3 text-sm font-medium text-white duration-300 hover:bg-primary/90 disabled:opacity-60 sm:w-auto sm:px-9 sm:py-4 sm:text-base"
                     >
-                      {status === "loading" ? "Sending..." : "Submit Ticket"}
+                      {status === "loading" ? "Sending..." : "Send message"}
                     </button>
                   </div>
                 </div>
               </form>
             </div>
-          </div>
-
-          <div
-            className="w-full px-3 lg:w-5/12 xl:w-4/12"
-            data-aos="fade-up"
-            data-aos-delay="400"
-          >
-            <NewsLatterBox />
-          </div>
         </div>
       </div>
     </section>

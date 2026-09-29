@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Solutions | Corefort Technologies",
   description:
     "The business problems Corefort Technologies solves: digital transformation, automation, infrastructure modernization, security, connectivity, payments, and more.",
+  alternates: { canonical: "/solutions" },
 };
 
 export default function SolutionsPage() {

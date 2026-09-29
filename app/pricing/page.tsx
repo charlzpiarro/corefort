@@ -1,6 +1,6 @@
 import Pricing from "@/components/Pricing";
 import Breadcrumb from "@/components/Common/Breadcrumb";
-import { metadata } from "./pricingMetadata"; // Import metadata
+export { metadata } from "./pricingMetadata";
 
 const PricingPage = () => {
   return (

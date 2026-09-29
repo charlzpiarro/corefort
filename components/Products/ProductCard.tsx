@@ -80,13 +80,23 @@ const ProductCard = ({ product, reverse, onDetailPage = false, tone = "light" }:
     ? amber ? "text-amber hover:text-amber-soft" : "text-[#9DB0FF] hover:text-white"
     : amber ? "text-amber-deep hover:text-ink" : "text-primary hover:text-primary/80";
 
+  const FIELD_ORDER: { key: keyof Product["caseStudy"]; label: string }[] = [
+    { key: "challenge", label: "Challenge" },
+    { key: "solution", label: "Solution" },
+    { key: "technology", label: "Technology" },
+    { key: "outcome", label: "Outcome" },
+  ];
+
   return (
     <div
       id={product.id}
-      className={`scroll-mt-32 grid items-center gap-10 rounded-3xl p-6 sm:p-8 lg:grid-cols-2 lg:gap-14 lg:p-12 ${
-        onDark ? "glass" : "border border-stroke bg-white shadow-card dark:border-white/10 dark:bg-navy-light dark:shadow-card-dark"
+      className={`scroll-mt-32 overflow-hidden rounded-3xl p-6 sm:p-8 lg:p-12 ${
+        onDark
+          ? "border border-white/10 bg-white/[0.04]"
+          : "border border-stroke bg-white shadow-card dark:border-white/10 dark:bg-navy-light dark:shadow-card-dark"
       }`}
     >
+    <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
       <div className={reverse ? "lg:order-2" : ""}>
         <span className={`mb-5 inline-flex rounded-full px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.15em] ${chip}`}>
           {product.category}
@@ -137,6 +147,24 @@ const ProductCard = ({ product, reverse, onDetailPage = false, tone = "light" }:
       <div className={reverse ? "lg:order-1" : ""}>
         <BrandPanel product={product} />
       </div>
+    </div>
+
+      {!onDetailPage && (
+        <div
+          className={`mt-10 grid grid-cols-1 gap-6 rounded-2xl p-6 sm:grid-cols-2 sm:p-8 ${
+            onDark ? "border border-white/10 bg-ink/25" : "border border-stroke bg-gray-light dark:border-white/10 dark:bg-navy"
+          }`}
+        >
+          {FIELD_ORDER.map((field) => (
+            <div key={field.key}>
+              <p className={`mb-2 text-xs font-semibold tracking-wide ${amber ? "text-amber-deep" : "text-primary"}`}>{field.label}</p>
+              <p className={`text-sm leading-relaxed ${onDark ? "text-white/[0.72]" : "text-body-color dark:text-body-color-dark"}`}>
+                {product.caseStudy[field.key]}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

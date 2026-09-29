@@ -17,13 +17,12 @@ const LogoCard = ({ brand }: { brand: Brand }) => (
 );
 
 /**
- * Endless, seamless logo row. Two identical groups slide left by exactly one group width, so the loop
- * has no visible seam. Pauses on hover. Reduced-motion visitors get a static wrapped grid instead.
- * Each group repeats the set so it is always wider than the screen.
+ * Endless, seamless logo row. Exactly two copies of the brand set sit side by side and slide left by
+ * one copy's width, so the loop has no visible seam: one real copy in the accessibility tree, one
+ * `aria-hidden` copy for the visual wrap-around. Pauses on hover. Reduced-motion visitors get a
+ * static wrapped grid instead.
  */
 const LogoMarquee = ({ brands, className = "" }: { brands: Brand[]; className?: string }) => {
-  const group = [...brands, ...brands, ...brands]; // wider than any screen so the loop never shows a gap
-
   return (
     <div className={className}>
       {/* moving row */}
@@ -35,8 +34,8 @@ const LogoMarquee = ({ brands, className = "" }: { brands: Brand[]; className?: 
         <div className="flex w-max animate-marquee [--marquee-dur:60s] hover:[animation-play-state:paused] group-focus-within/marquee:[animation-play-state:paused]">
           {[0, 1].map((copy) => (
             <div key={copy} className="flex shrink-0 gap-4 pr-4" aria-hidden={copy === 1 ? true : undefined}>
-              {group.map((brand, i) => (
-                <LogoCard key={`${copy}-${i}-${brand.id}`} brand={brand} />
+              {brands.map((brand) => (
+                <LogoCard key={`${copy}-${brand.id}`} brand={brand} />
               ))}
             </div>
           ))}

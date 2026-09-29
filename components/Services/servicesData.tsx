@@ -17,6 +17,8 @@ export type Service = {
   points: string[];
   /** Illustrative photo for the explorer panel (public/images/photos). Optional. */
   image?: { src: string; alt: string; width: number; height: number; position?: string };
+  /** Real page that goes deeper on this practice — every tile links somewhere, no dead ends. */
+  href: string;
 };
 
 const servicesData: Service[] = [
@@ -29,6 +31,7 @@ const servicesData: Service[] = [
       "Custom platforms, business systems, APIs, and scalable digital products.",
     points: ["Custom platforms","Business systems","APIs","Web & mobile applications","Digital products"],
     image: {"src":"/images/photos/erp-dashboard.webp","alt":"A laptop showing a business dashboard with inventory, sales and report charts","width":1000,"height":667},
+    href: "/products",
   },
   {
     id: "service-cloud-infrastructure",
@@ -39,6 +42,7 @@ const servicesData: Service[] = [
       "Reliable infrastructure, deployment, monitoring, networking, and cloud systems.",
     points: ["Infrastructure","Deployment","Monitoring","Networking","Cloud systems"],
     image: {"src":"/images/photos/network-globe.webp","alt":"A globe connected by cables to a router and storage, representing cloud and infrastructure","width":900,"height":836},
+    href: "/solutions",
   },
   {
     id: "service-cybersecurity",
@@ -49,6 +53,7 @@ const servicesData: Service[] = [
       "Security engineering, infrastructure protection, assessments, and secure architecture.",
     points: ["Security engineering","Infrastructure protection","Assessments","Secure architecture"],
     image: {"src":"/images/photos/security-desk.webp","alt":"A laptop showing a shield, a padlock and a Wi-Fi symbol","width":1000,"height":790},
+    href: "/security",
   },
   {
     id: "service-fintech",
@@ -58,6 +63,7 @@ const servicesData: Service[] = [
     description:
       "Payment infrastructure, financial platforms, transaction systems, and automation.",
     points: ["Payment infrastructure","Financial platforms","Transaction systems","Automation"],
+    href: "/solutions/payment-financial-systems",
   },
   {
     id: "service-connectivity",
@@ -68,6 +74,7 @@ const servicesData: Service[] = [
       "ISP infrastructure, network management, hotspot systems, and connectivity platforms.",
     points: ["ISP infrastructure","Network management","Hotspot systems","Connectivity platforms"],
     image: {"src":"/images/photos/network-devices.webp","alt":"Phones, a laptop, a tablet and a TV connected through a router to the internet","width":1000,"height":1000},
+    href: "/products/netpurse",
   },
   {
     id: "service-ai-automation",
@@ -78,6 +85,7 @@ const servicesData: Service[] = [
       "Intelligent workflows, automation, data-driven systems, and AI-powered solutions.",
     points: ["Intelligent workflows","Automation","Data-driven systems","AI-powered solutions"],
     image: {"src":"/images/photos/ai-robot.webp","alt":"A friendly robot with glowing blue eyes","width":800,"height":1028,"position":"50% 30%"},
+    href: "/solutions/business-automation",
   },
 ];
 

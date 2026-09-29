@@ -13,8 +13,8 @@ const Security = () => {
         <div data-aos="fade-up">
           <SectionTitle
             eyebrow="Security"
-            title="Security Is Designed In, Not Bolted On"
-            paragraph="Security is considered throughout architecture, development, and deployment, not treated as a final checklist."
+            title="Security is designed in, not bolted on"
+            paragraph="Security is considered throughout architecture, development, and deployment, not treated as a final checklist, and it runs across every layer Corefort builds: applications, data, cloud, and infrastructure."
             center
             light
             mb="56px"
@@ -24,6 +24,14 @@ const Security = () => {
         <div data-aos="fade-up">
           <SecurityCycle />
         </div>
+
+        <ul className="mx-auto mt-10 flex max-w-2xl flex-wrap justify-center gap-3" data-aos="fade-up">
+          {["Threat monitoring", "Secure architecture", "Access control"].map((item) => (
+            <li key={item} className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm font-medium text-white/80">
+              {item}
+            </li>
+          ))}
+        </ul>
 
         <p className="mx-auto mt-10 max-w-2xl text-center text-xs leading-relaxed text-white/[0.45]" data-aos="fade-up">
           These describe how we approach security engineering. They are not claims of formal

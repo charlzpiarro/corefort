@@ -8,9 +8,9 @@ const Products = () => {
     <Stage tone="ink" id="products">
       <div data-aos="fade-up">
         <SectionTitle
-          eyebrow="Our Products"
-          title="Products Built by Corefort"
-          paragraph="Beyond client engineering, Corefort designs and operates its own technology products, built, owned, and continuously improved in-house."
+          eyebrow="Our products"
+          title="Built by Corefort, running in production"
+          paragraph="Beyond client engineering, Corefort designs and operates its own technology products end-to-end: the challenge each one solves, how it was built, and the result, not marketing claims."
           center
           light
           mb="56px"

@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Security | Corefort Technologies",
   description:
     "How Corefort Technologies approaches security across architecture, development, infrastructure, and operations.",
+  alternates: { canonical: "/security" },
 };
 
 const ADDITIONAL_AREAS = [

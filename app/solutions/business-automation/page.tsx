@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Business Automation | Corefort Technologies",
   description:
     "Corefort helps businesses automate repetitive operational work, from point-of-sale and inventory to sales and expense tracking.",
+  alternates: { canonical: "/solutions/business-automation" },
 };
 
 const OUTCOMES = [

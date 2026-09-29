@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Insights | Corefort Technologies",
   description:
     "Perspectives from the Corefort team on engineering, security, and building technology for the markets we operate in.",
+  alternates: { canonical: "/insights" },
 };
 
 const CATEGORIES: InsightCategory[] = ["Technology", "Cybersecurity", "Business", "Emerging Technology"];

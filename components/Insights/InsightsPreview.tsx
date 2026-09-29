@@ -63,7 +63,7 @@ const InsightsPreview = () => {
             <span aria-hidden className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full border border-white/20" />
             <span aria-hidden className="pointer-events-none absolute -right-8 -top-8 h-40 w-40 rounded-full border border-white/25" />
             <span aria-hidden className="pointer-events-none absolute right-8 top-8 h-3 w-3 rounded-full bg-amber shadow-[0_0_18px_4px_rgba(251,176,64,0.7)]" />
-            <span className="glass relative rounded-full px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-white">{lead.category}</span>
+            <span className="relative rounded-full border border-white/25 bg-ink/50 px-3.5 py-1.5 text-[11px] font-semibold tracking-wide text-white">{lead.category}</span>
           </div>
           <div className="p-6 sm:p-8">
             <h3 className="mb-3 text-2xl font-bold leading-tight text-ink transition-colors group-hover:text-primary sm:text-[28px]">{lead.title}</h3>
@@ -105,12 +105,9 @@ const InsightsPreview = () => {
                   </>
                 )}
                 <span aria-hidden className="pointer-events-none absolute -bottom-10 -right-10 h-40 w-40 rounded-full border border-white/25" />
-                <span aria-hidden className={`absolute bottom-3 left-4 select-none text-6xl font-extrabold leading-none text-white opacity-60`}>
-                  {String(i + 2).padStart(2, "0")}
-                </span>
               </div>
               <div className="flex flex-1 flex-col p-5 sm:p-6">
-                <span className="mb-3 inline-flex w-fit rounded-full bg-primary/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-primary">
+                <span className="mb-3 inline-flex w-fit rounded-full bg-primary/10 px-3 py-1 text-[11px] font-semibold tracking-wide text-primary">
                   {post.category}
                 </span>
                 <h3 className="mb-2 text-lg font-bold leading-snug text-ink transition-colors group-hover:text-primary">{post.title}</h3>

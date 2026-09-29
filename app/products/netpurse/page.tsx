@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "NetPurse | Corefort Technologies",
   description:
     "NetPurse is a connectivity and payment infrastructure platform designed for ISPs, hotspot operators, and connectivity businesses.",
+  alternates: { canonical: "/products/netpurse" },
 };
 
 const netpurse = productsData.find((p) => p.id === "product-netpurse")!;
